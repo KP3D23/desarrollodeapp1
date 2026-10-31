@@ -1,0 +1,9 @@
+# Framework principal requerido para el backend
+Django>=4.1,<5.0
+
+# Manejo de imágenes (requerido para avatares y archivos multimedia de usuarios)
+pillow
+
+# Mejoras de renderizado y diseño para formularios con Bootstrap
+django-crispy-forms
+crispy-bootstrap5

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio - Dashboard{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm p-4">
+    <h2>Panel Principal</h2>
+    <p class="lead">Nivel de acceso actual: <strong>{{ user_role }}</strong></p>
+    <hr>
+
+    {% if user_role == 'Administrador' %}
+        <div class="alert alert-danger">
+            <h4>Módulo de Administración</h4>
+            <p>Acceso total al sistema, auditoría y gestión de base de datos.</p>
+            <a href="/admin/" class="btn btn-danger">Ir a Django Admin</a>
+        </div>
+    {% elif user_role == 'Gestor' %}
+        <div class="alert alert-warning">
+            <h4>Módulo de Gestión</h4>
+            <p>Capacidad de supervisar órdenes, reportes y métricas operativas.</p>
+            <button class="btn btn-warning">Gestionar Proyectos</button>
+        </div>
+    {% elif user_role == 'Usuario' %}
+        <div class="alert alert-success">
+            <h4>Módulo de Usuario Registrado</h4>
+            <p>Bienvenido. Puedes consultar tus pedidos y editar tu perfil personal.</p>
+            <button class="btn btn-success">Ver mis pedidos</button>
+        </div>
+    {% else %}
+        <div class="alert alert-secondary">
+            <h4>Vista de Visitante</h4>
+            <p>Solo puedes ver la información pública de la plataforma.</p>
+            <a href="{% url 'register' %}" class="btn btn-primary">Crear una cuenta</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
